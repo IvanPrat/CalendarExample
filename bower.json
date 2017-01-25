@@ -1,0 +1,7 @@
+{
+  "name": "Test",
+  "dependencies": {
+    "normalize.css": "*",
+    "handlebars": "~4.0.5"
+  }
+}

@@ -1,0 +1,23 @@
+// Form Component
+$form-items-size: $gutter-double;
+
+.form {
+  .input-text {
+    @include border-radius(4px);
+
+    background-color: $color-white;
+    border: 1px solid $color-grey;
+
+    color: $color-black;
+    padding: $gutter-half;
+    height: $form-items-size;
+
+    &:focus{
+      border-color: $color-blue-faded;
+    }
+  }
+
+  .btn {
+    height: $form-items-size;
+  }
+}

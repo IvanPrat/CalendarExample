@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calendar Test</title>
+
+    <link href="dist/css/styles.min.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+
+    <div class="calendar">
+      <div class="month">
+       <ul>
+         <li class="prev">&#10094;</li>
+         <li class="next">&#10095;</li>
+       </ul>
+       <span class="title-month">
+         January
+       </span>
+      </div>
+
+      <div class="weekdays">
+        <ul>
+          <li>Monday</li>
+          <li>Tuesday</li>
+          <li>Wednesday</li>
+          <li>Thursday</li>
+          <li>Friday</li>
+          <li>Saturday</li>
+          <li>Sunday</li>
+        </ul>
+      </div>
+
+      <div class="well" id="formItems" style="display: none;">
+        <form class="form form-inline">
+          <input type="hidden" name="day" id="day"/>
+          <input class="input-text"type="text" name="eventName" id="eventName" placeholder="Your Event Name"/>
+
+          <!-- Please, provide a valid timestamp, as it's not using dates -->
+          <input class="input-text"type="datetime" name="eventTime" id="eventTime" placeholder="Timestamp ie: 1485335569"/>
+
+          <button class="btn" onclick="createNewEvent();" type="button">Create Item</button>
+
+          <span class="alert alert-red" id="formItemsMessages"></span>
+        </form>
+      </div>
+
+      <div class="days" id="hb-calendar"></div>
+    </div>
+
+    <!-- Global Functions for this App -->
+    <script src = "dist/js/functions.min.js"></script>
+
+    <!-- Main dependencies -->
+    <script src = "dist/js/handlebars.min.js"></script>
+    <script src = "js/class.calendar.js"></script> <!-- Note this is not minified. This is due some silly bugs with Grunt -->
+
+    <!-- The template -->
+    <script id="templateCalendar" type="text/x-handlebars-template">
+      <ul>
+        {{#each this as |parent parentIndex|}}
+          <li>
+            <a href="#" class="new-item" onclick="showNewEvent({{@key}})">new item</a>
+            <span>{{@key}}</span>
+
+              <ul class="days-event" id="events-{{@key}}">
+                {{#each this.events}}
+                  <li title="{{this.timestamp}}" id="{{parentIndex}}{{@key}}">{{this.name}} <a href="#" class="times" onclick="removeEvent({{parentIndex}}, {{@key}})">&times</a></li>
+                {{/each}}
+              </ul>
+          </li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script>
+      // So you don't need to load it all at once (this should come directly from a JSON File or AJAX Call, ofc)
+      var eventsJanuary = {
+        1 : {
+          events : {
+            1 : {'name': 'Event 1 (hover me)', 'timestamp': tm(1485299160)},
+            2 : {'name': 'Event 2', 'timestamp': tm(1485299160)}
+          }
+        },
+        2 : {},
+        3 : {},
+        4 : {},
+        5 : {},
+        6 : {},
+        7 : {},
+
+        8 : {},
+        9 : {},
+        10 : {},
+        11 : {},
+        12 : {},
+        13 : {},
+        14 : {},
+        15 : {},
+        16 : {},
+        17 : {},
+        18 : {},
+        19 : {
+          events : {
+            1 : {'name': 'Event 1 (hover me)', 'timestamp': tm(1485299160)},
+            2 : {'name': 'Event 2', 'timestamp': tm(1485299160)}
+          }
+        },
+        20 : {},
+        21 : {},
+        22 : {},
+        23 : {},
+        23 : {},
+        24 : {},
+        25 : {},
+        26 : {},
+        27 : {},
+        28 : {},
+        29 : {},
+        30 : {}
+      }
+
+      var calendar = new Calendar(eventsJanuary);
+
+      // Render Template on Load
+      renderTemplate(eventsJanuary);
+    </script>
+  </body>
+</html>

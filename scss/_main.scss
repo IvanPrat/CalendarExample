@@ -1,0 +1,26 @@
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+  background-color: $color-softgrey;
+
+  min-width: $breakpoint-md;
+}
+
+ul {
+  list-style-type: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $color-blue;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: rgba($color-blue, 0.7);
+  text-decoration: underline;
+}

@@ -1,0 +1,18 @@
+// Gutter(s)
+$gutter: 20px;
+$gutter-double: $gutter * 2;
+$gutter-half: $gutter / 2;
+
+// Color(s)
+$color-blue: #2E64FE;
+$color-blue-faded: rgba($color-blue, 0.7);
+
+$color-black: #000;
+$color-white: #fff;
+
+$color-grey: #E6E6E6;
+$color-softgrey: #eee;
+$color-grey-faded: rgba($color-black, 0.010);
+
+// Breakpoints
+$breakpoint-md: 960px;

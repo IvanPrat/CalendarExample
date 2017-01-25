@@ -1,0 +1,8 @@
+// Alert Component
+.alert {
+  font-size: 0.8em;
+
+  &.alert-red {
+    color: red;
+  }
+}
